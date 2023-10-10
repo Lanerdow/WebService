@@ -9,6 +9,9 @@
       document.addEventListener('DOMContentLoaded', function() {
         month = '{{month}}';
         month = parseInt(month) + 1;
+        if(month < 10) {
+          month = "0"+month.toString();
+        }
         var calendarEl = document.getElementById('calendar');
         console.log('{{year}}-'+month+'-00');
         var calendar = new FullCalendar.Calendar(calendarEl, {
