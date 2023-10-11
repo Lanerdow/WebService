@@ -17,6 +17,7 @@ def get_calendar(year, month):
         response = requests.get(api_url)
     except:
         print(f"Error for the request")
+        return render_template('error.html')
     else:
         if response.status_code == 200:
             data = response.json()
@@ -24,7 +25,7 @@ def get_calendar(year, month):
             return render_template('calendar.html', year=year, month=month, calendar=data['calendar'])
         else:
             print(f"Error for the request with status code {response.status_code}")
-            return response.status_code
+            return render_template('error.html')
 
 
 if __name__ == '__main__':
